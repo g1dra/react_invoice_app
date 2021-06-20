@@ -35,7 +35,7 @@ const App = () => {
                     <Route path="/customers">
                         <Customers/>
                     </Route>
-                    <Route path="/service">
+                    <Route path="/services">
                         <Service/>
                     </Route>
                     <Route path="/">

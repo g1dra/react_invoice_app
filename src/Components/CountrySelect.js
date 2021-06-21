@@ -5,26 +5,26 @@ const CountrySelect = () => {
 
     const [countries, setCountries] = useState();
 
-    useEffect(()=>{
-        fetch('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;region;flag').then( response => {
+    useEffect(() => {
+        fetch('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;region;flag').then(response => {
             return response.json();
         }).then(data => {
-            console.log(data)
             setCountries(data)
         })
-    })
+    }, [])
 
     return (
         <>
             <Form.Label>Country</Form.Label>
-            <Form.Control as="select">
-                <option>{JSON.stringify(countries[0])}</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <Form.Control as="select" required>
+                {countries && countries.map(ele => {
+                    return <option key={ele.alpha2Code} value={ele.alpha2Code}>
+                                {ele.name}
+                            </option>
+                })}
             </Form.Control>
         </>
     )
 }
-
+// todo show country flag, mb using different component
 export default CountrySelect;

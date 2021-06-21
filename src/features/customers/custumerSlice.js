@@ -5,7 +5,6 @@ export const customerSlice = createSlice({
     initialState: {
         customers: [
             {
-                "id": 1,
                 "name": "Darko",
                 "email": "darko.vucetic7@gmail.com",
                 "address": "Bratstva Jedinstva",

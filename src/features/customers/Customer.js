@@ -69,24 +69,28 @@ const Customer = () => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            
         }
-        event.preventDefault();
-        setValidated(true);
+        else {
+            event.preventDefault();
+            setValidated(true);
 
-        let customer = {
-            name,
-            email,
-            address,
-            business,
-            city,
-            country,
-            region: countries.filter(ele => ele.name === country)[0].region,
-            zipCode,
-            phone,
-            vat
-        };
-        console.log(customer)
-        dispatch(add(customer))
+            let customer = {
+                name,
+                email,
+                address,
+                business,
+                city,
+                country,
+                region: countries.filter(ele => ele.name === country)[0].region,
+                zipCode,
+                phone,
+                vat
+            };
+            console.log(customer)
+            dispatch(add(customer))
+        }
+
     };
 
     return (

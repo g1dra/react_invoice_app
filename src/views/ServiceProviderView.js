@@ -1,5 +1,5 @@
 import React from "react";
-import ServiceProviderds from "../features/serviceProviders/ServiceProviderds"
+import ServiceProviders from "../features/serviceProviders/ServiceProviders"
 export const ServiceProviderView = () => {
-    return <ServiceProviderds></ServiceProviderds>
+    return <ServiceProviders></ServiceProviders>
 }

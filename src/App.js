@@ -7,10 +7,11 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import {Service} from "./views/Service";
-import {ServiceProvider} from "./views/ServiceProvider";
-import {Customers} from "./views/Customer";
+import {ServiceView} from "./views/ServiceView";
+import {ServiceProviderView} from "./views/ServiceProviderView";
+import {CustomerView} from "./views/CustomerView";
 import {Container} from "react-bootstrap";
+import {InvoiceView} from "./views/InvoiceView";
 
 const App = () => {
     return (
@@ -28,20 +29,26 @@ const App = () => {
                             <li>
                                 <Link to="/customers">Customers</Link>
                             </li>
+                            <li>
+                                <Link to="/invoice">Make Invoice</Link>
+                            </li>
                         </ul>
                     </nav>
                     <Switch>
                         <Route path="/service-providers">
-                            <ServiceProvider/>
+                            <ServiceProviderView/>
                         </Route>
                         <Route path="/customers">
-                            <Customers/>
+                            <CustomerView/>
                         </Route>
                         <Route path="/services">
-                            <Service/>
+                            <ServiceView/>
+                        </Route>
+                        <Route path="/invoice">
+                            <InvoiceView/>
                         </Route>
                         <Route path="/">
-                            <Service/>
+                            <ServiceView/>
                         </Route>
                     </Switch>
                 </div>

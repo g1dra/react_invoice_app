@@ -99,7 +99,7 @@ const Customer = () => {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" required onChange={emailHandler}/>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="email">
+            <Form.Group className="mb-3" controlId="business">
                 <Form.Label>Business</Form.Label>
                 <Form.Control as="select" required onChange={businessHandler}>
                     <option>Open this select menu</option>
@@ -107,7 +107,6 @@ const Customer = () => {
                     <option value="legal">Legal</option>
                 </Form.Control>
             </Form.Group>
-
             <Form.Group className="mb-3" controlId="address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control type="text" placeholder="Enter address" required onChange={addressHandler}/>

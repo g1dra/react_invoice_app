@@ -1,5 +1,4 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {customerSlice} from "../customers/custumerSlice";
 
 export const serviceProviderSlice = createSlice({
     name: 'serviceProvider',
@@ -15,11 +14,7 @@ export const serviceProviderSlice = createSlice({
                 "zipCode": "90011",
                 "region": "Americas",
                 "phone": "+38269559834",
-                "vat" : {
-                    "payer" : true,
-                    "standard_rate": 21,
-                    "id": "ATU99999999"
-                }
+                "vat": "ATU99999999"
             }
         ]
     },

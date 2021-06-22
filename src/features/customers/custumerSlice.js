@@ -11,7 +11,6 @@ export const customerSlice = createSlice({
                 "address": "Bratstva Jedinstva",
                 "city": "Podgorica",
                 "country": "Montenegro",
-                "countryCode": "ME",
                 "zipCode": "81000",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"

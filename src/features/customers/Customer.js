@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {add, selectCustomer} from './custumerSlice'
+import {add, selectCustomers} from './custumerSlice'
 import {Button, Form} from 'react-bootstrap';
 
 const Customer = () => {
-    const customers = useSelector(selectCustomer);
+    const customers = useSelector(selectCustomers);
 
     const [countries, setCountries] = useState();
 
@@ -59,6 +59,11 @@ const Customer = () => {
         setVat(event.target.value)
     }
 
+    const [business, setBusiness] = useState('');
+    const businessHandler = (event) => {
+        setBusiness(event.target.value)
+    }
+
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -72,6 +77,7 @@ const Customer = () => {
             name,
             email,
             address,
+            business,
             city,
             country,
             region: countries.filter(ele => ele.name === country)[0].region,
@@ -93,6 +99,15 @@ const Customer = () => {
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" required onChange={emailHandler}/>
             </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Business</Form.Label>
+                <Form.Control as="select" required onChange={businessHandler}>
+                    <option>Open this select menu</option>
+                    <option value="natural">Natural</option>
+                    <option value="legal">Legal</option>
+                </Form.Control>
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control type="text" placeholder="Enter address" required onChange={addressHandler}/>

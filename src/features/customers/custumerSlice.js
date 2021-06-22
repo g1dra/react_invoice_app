@@ -7,6 +7,7 @@ export const customerSlice = createSlice({
             {
                 "name": "Darko",
                 "email": "darko.vucetic7@gmail.com",
+                "business": "Legal",
                 "address": "Bratstva Jedinstva",
                 "city": "Podgorica",
                 "country": "Montenegro",
@@ -18,15 +19,15 @@ export const customerSlice = createSlice({
         ]
     },
     reducers: {
-        add(state, action){
+        add(state, action) {
             state.customers.push(action.payload)
         }
     }
 })
 
-export const { add } = customerSlice.actions
+export const {add} = customerSlice.actions
 
-export const selectCustomer = state => state.customer.customers
+export const selectCustomers = state => state.customer.customers
 
 export default customerSlice.reducer
 

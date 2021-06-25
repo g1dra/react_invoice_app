@@ -6,7 +6,7 @@ import {Button, Form} from 'react-bootstrap';
 const Customer = () => {
     const customers = useSelector(selectCustomers);
 
-    const [countries, setCountries] = useState();
+    const [countries, setCountries] = useState([]);
 
     useEffect(() => {
         fetch('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;region;flag').then(response => {

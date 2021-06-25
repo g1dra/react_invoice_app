@@ -6,7 +6,7 @@ import {add, selectServiceProviders} from './serviceProviderSlice'
 export const ServiceProvider = () => {
     const serviceProvders = useSelector(selectServiceProviders);
 
-    const [countries, setCountries] = useState();
+    const [countries, setCountries] = useState([]);
 
     useEffect(() => {
         fetch('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;region;flag').then(response => {

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {add, selectCustomers} from './CustumerSlice'
+import {add, selectCustomers} from './CustomerSlice'
 import {Button, Form} from 'react-bootstrap';
 
 const Customer = () => {

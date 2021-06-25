@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Form} from "react-bootstrap";
 import {useSelector} from "react-redux";
-import {selectCustomers} from "../customers/CustumerSlice";
+import {selectCustomers} from "../customers/CustomerSlice";
 import {selectServiceProviders} from "../serviceProviders/serviceProviderSlice";
 import Select from 'react-select';
 import {selectServices} from "../services/serviceSlice";

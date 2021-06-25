@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {add, selectCustomers} from './custumerSlice'
+import {add, selectCustomers} from './CustumerSlice'
 import {Button, Form} from 'react-bootstrap';
 
 const Customer = () => {
@@ -17,6 +17,7 @@ const Customer = () => {
     }, [])
 
     const [validated, setValidated] = useState(false);
+
     const dispatch = useDispatch();
 
     const [name, setName] = useState('');
@@ -69,9 +70,8 @@ const Customer = () => {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-            
-        }
-        else {
+
+        } else {
             event.preventDefault();
             setValidated(true);
 
@@ -130,7 +130,7 @@ const Customer = () => {
                 </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3" controlId="zipCode">
-                <Form.Label>Address</Form.Label>
+                <Form.Label>Zip code</Form.Label>
                 <Form.Control type="text" placeholder="Enter zip code" required onChange={zipCodeHandler}/>
             </Form.Group>
             <Form.Group className="mb-3" controlId="phone">

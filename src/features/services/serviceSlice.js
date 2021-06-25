@@ -5,6 +5,15 @@ export const serviceSlice = createSlice({
     initialState: {
         services: [
             {
+                "name": "peglanje",
+                "date": "15.04.2021",
+                "description" : "Description",
+                "vat_rate": 10,
+                "price": 1000,
+                "totalPrice": 1100
+            },
+            {
+                "name": "kuvanje",
                 "date": "15.04.2021",
                 "description" : "Description",
                 "vat_rate": 10,
@@ -15,7 +24,7 @@ export const serviceSlice = createSlice({
     },
     reducers: {
         add(state, action) {
-            state.service.push(action.payload)
+            state.services.push(action.payload)
         }
     }
 })

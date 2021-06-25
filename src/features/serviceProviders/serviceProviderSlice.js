@@ -15,6 +15,18 @@ export const serviceProviderSlice = createSlice({
                 "region": "Americas",
                 "phone": "+38269559834",
                 "vat": "ATU99999999"
+            },
+            {
+                "name": "Amazon",
+                "email": "google@gmail.com",
+                "address": "1600 Amphitheatre Parkway Mountain View, CA 94043",
+                "city": "Paris",
+                "country": "United States of America",
+                "countryCode": "US",
+                "zipCode": "90011",
+                "region": "Americas",
+                "phone": "+38269559834",
+                "vat": "ATU99999999"
             }
         ]
     },

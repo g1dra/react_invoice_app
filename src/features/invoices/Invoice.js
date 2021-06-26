@@ -1,74 +1,110 @@
-import React, {useState} from "react";
-import {Form} from "react-bootstrap";
+import React from "react";
+import {Form, Button, Select} from 'antd';
 import {useSelector} from "react-redux";
 import {selectCustomers} from "../customers/CustomerSlice";
 import {selectServiceProviders} from "../serviceProviders/serviceProviderSlice";
-import Select from 'react-select';
 import {selectServices} from "../services/serviceSlice";
 
 const Invoice = () => {
 
-    const [validated, setValidated] = useState(false);
+    const {Option} = Select;
 
     const customers = useSelector(selectCustomers);
-    const [customer, setCustomer] = useState('');
-    const customerHandler = (event) => {
-        setCustomer(event.target.value)
-    }
 
     const serviceProviders = useSelector(selectServiceProviders);
 
     const services = useSelector(selectServices);
-    let servicesForSelect = JSON.parse(JSON.stringify(services))
 
-    servicesForSelect = servicesForSelect.map(ele=>{
-        ele.value = ele.name;
-        ele.label = ele.name;
-        return ele;
-    })
+    const onFinish = (values) => {
+        console.log('Success:', values);
+    };
 
-    const [serviceProvider, setServiceProviders] = useState('');
-    const serviceProviderHandler = (event) => {
-        setServiceProviders(event.target.value)
-    }
-
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        } else {
-            event.preventDefault();
-            setValidated(true);
-        }
-    }
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
 
     return (
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="customer">
-                <Form.Label>Customer</Form.Label>
-                <Form.Control as="select" required onChange={customerHandler}>
+        <Form
+            name="basic"
+            labelCol={{
+                span: 4,
+            }}
+            wrapperCol={{
+                span: 16,
+            }}
+            initialValues={{
+                remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+        >
+            <Form.Item
+                label="Customer"
+                name="customer"
+                rules={[{required: true, message: 'Please select Customer'}]}
+            >
+                <Select
+                    allowClear
+                    style={{width: '100%'}}
+                    placeholder="Please select customer"
+                >
                     {customers && customers.map(customer => {
-                        return <option key={customer.name} value={customer.name}>
+                        return <Option key={customer.name} value={customer.name}>
                             {customer.name}
-                        </option>
+                        </Option>
                     })}
-                </Form.Control>
-            </Form.Group>
+                </Select>
+            </Form.Item>
 
-            <Form.Group className="mb-3" controlId="serviceProvider">
-                <Form.Label>Service Provider</Form.Label>
-                <Form.Control as="select" required onChange={serviceProviderHandler}>
+            <Form.Item
+                label="Service provider"
+                name="serviceProvider"
+                rules={[{required: true, message: 'Please select Service Provider'}]}
+            >
+                <Select
+                    allowClear
+                    style={{width: '100%'}}
+                    placeholder="Please select Service Provider"
+                >
                     {serviceProviders && serviceProviders.map(serviceProvider => {
-                        return <option key={serviceProvider.name} value={serviceProvider.name}>
+                        return <Option key={serviceProvider.name} value={serviceProvider.name}>
                             {serviceProvider.name}
-                        </option>
+                        </Option>
                     })}
-                </Form.Control>
-            </Form.Group>
-            <p>Select Services</p>
-            <Select options={servicesForSelect} isMulti onChange={serviceHandler}/>
+                </Select>
+            </Form.Item>
+
+            <Form.Item
+                label="Services"
+                name="services"
+                rules={[{required: true, message: 'Please select Service Provider'}]}
+            >
+                <Select
+                    mode="multiple"
+                    allowClear
+                    style={{width: '100%'}}
+                    placeholder="Please select Services "
+                >
+                    {services && services.map(service => {
+                        return <Option key={service.name} value={service.name}>
+                            {service.name}
+                        </Option>
+                    })}
+                </Select>
+            </Form.Item>
+
+            <Form.Item
+                wrapperCol={{
+                    offset: 4,
+                    span: 16,
+                }}
+            >
+                <Button type="primary" htmlType="submit">
+                    Submit
+                </Button>
+            </Form.Item>
         </Form>
+
     )
 }
 

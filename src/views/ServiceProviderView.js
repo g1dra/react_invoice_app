@@ -1,5 +1,16 @@
 import React from "react";
 import ServiceProviders from "../features/serviceProviders/ServiceProviders"
+import {PageHeader} from 'antd';
+
 export const ServiceProviderView = () => {
-    return <ServiceProviders></ServiceProviders>
+    return (
+        <div>
+            <PageHeader
+                className="site-page-header"
+                title="Service providers"
+            />
+            <ServiceProviders/>
+        </div>
+    )
 }
+

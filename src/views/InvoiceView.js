@@ -1,11 +1,14 @@
 import React from "react";
 import Invoice from "../features/invoices/Invoice";
-
+import {PageHeader} from "antd";
 
 export const InvoiceView = () => {
     return (
         <>
-            <h2>Make Invoice</h2>
+            <PageHeader
+                className="site-page-header"
+                title="Invoices"
+            />
             <Invoice/>
         </>
     )

@@ -1,22 +1,39 @@
-import React from "react";
-import {Form, Button, Select} from 'antd';
+import React, {useState} from "react";
+import {Form, Button, Select, Modal} from 'antd';
 import {useSelector} from "react-redux";
 import {selectCustomers} from "../customers/CustomerSlice";
 import {selectServiceProviders} from "../serviceProviders/serviceProviderSlice";
 import {selectServices} from "../services/serviceSlice";
+import InvoiceForm from "./InvoiceForm";
 
 const Invoice = () => {
 
     const {Option} = Select;
 
     const customers = useSelector(selectCustomers);
+    const [selectedCustomer, setSelectedCustomer] = useState({});
 
     const serviceProviders = useSelector(selectServiceProviders);
+    const [selectedServiceProvider, setSelectedServiceProvider] = useState({});
 
     const services = useSelector(selectServices);
+    const [selectedServices, setSelectedServices] = useState([]);
+
+    const [visible, setVisible] = useState(false);
 
     const onFinish = (values) => {
         console.log('Success:', values);
+        setVisible(true);
+
+        let sServices = services.filter(service => values.services.includes(service.name));
+
+        setSelectedServices(sServices);
+
+        let sCustomer = customers.filter(customer => customer.name === values.customer)[0];
+        setSelectedCustomer(sCustomer);
+
+        let sSelectedProvider = serviceProviders.filter(serviceProvider => serviceProvider.name === values.serviceProvider)[0];
+        setSelectedServiceProvider(sSelectedProvider);
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -46,7 +63,7 @@ const Invoice = () => {
                 <Select
                     allowClear
                     style={{width: '100%'}}
-                    placeholder="Please select customer"
+                    placeholder="Select customer"
                 >
                     {customers && customers.map(customer => {
                         return <Option key={customer.name} value={customer.name}>
@@ -64,7 +81,7 @@ const Invoice = () => {
                 <Select
                     allowClear
                     style={{width: '100%'}}
-                    placeholder="Please select Service Provider"
+                    placeholder="Select Service Provider"
                 >
                     {serviceProviders && serviceProviders.map(serviceProvider => {
                         return <Option key={serviceProvider.name} value={serviceProvider.name}>
@@ -83,7 +100,7 @@ const Invoice = () => {
                     mode="multiple"
                     allowClear
                     style={{width: '100%'}}
-                    placeholder="Please select Services "
+                    placeholder="Select Services"
                 >
                     {services && services.map(service => {
                         return <Option key={service.name} value={service.name}>
@@ -100,8 +117,18 @@ const Invoice = () => {
                 }}
             >
                 <Button type="primary" htmlType="submit">
-                    Submit
+                    Generate Invoice
                 </Button>
+                <Modal
+                    title="Invoice"
+                    centered
+                    visible={visible}
+                    onOk={() => setVisible(false)}
+                    onCancel={() => setVisible(false)}
+                    width={1000}
+                >
+                    <InvoiceForm services={selectedServices} customer={selectedCustomer} serviceProvider={selectedServiceProvider}/>
+                </Modal>
             </Form.Item>
         </Form>
 

@@ -44,7 +44,7 @@ export const ServiceProvider = () => {
                 name="name"
                 rules={[{required: true, message: 'Please insert Service provider name'}]}
             >
-                <Input/>
+                <Input placeholder="Please insert service provider description"/>
             </Form.Item>
 
             <Form.Item
@@ -136,34 +136,6 @@ export const ServiceProvider = () => {
             </p>
 
         </Form>
-        /*<Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Group>
-                <Form.Label>Country</Form.Label>
-                <Form.Control as="select" required onChange={countryHandler}>
-                    {countries && countries.map(ele => {
-                        return <option key={ele.alpha2Code} value={ele.name}>
-                            {ele.name}
-                        </option>
-                    })}
-                </Form.Control>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="zipCode">
-                <Form.Label>Address</Form.Label>
-                <Form.Control type="text" placeholder="Enter zip code" required onChange={zipCodeHandler}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="phone">
-                <Form.Label>Phone</Form.Label>
-                <Form.Control type="text" placeholder="Enter phone" required onChange={phoneHandler}/>
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="vat">
-                <Form.Label>VAT</Form.Label>
-                <Form.Control type="text" placeholder="Enter vat" onChange={vatHandler}/>
-            </Form.Group>
-            <Button type="submit">Submit</Button>
-            <p>
-                {JSON.stringify(serviceProvders)}
-            </p>
-        </Form>*/
     )
 }
 

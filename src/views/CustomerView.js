@@ -8,7 +8,8 @@ export const CustomerView = () => {
             <PageHeader
                 className="site-page-header"
                 title="Customers"
-            /><Customer/>
+            />
+            <Customer/>
         </div>
     )
 }

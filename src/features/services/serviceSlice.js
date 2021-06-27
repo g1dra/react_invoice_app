@@ -8,7 +8,7 @@ export const serviceSlice = createSlice({
                 "name": "peglanje",
                 "date": "15.04.2021",
                 "description" : "Description",
-                "vat_rate": 10,
+                "vatRate": 10,
                 "price": 1000,
                 "totalPrice": 1100
             },
@@ -16,7 +16,7 @@ export const serviceSlice = createSlice({
                 "name": "kuvanje",
                 "date": "15.04.2021",
                 "description" : "Description",
-                "vat_rate": 10,
+                "vatRate": 10,
                 "price": 1000,
                 "totalPrice": 1100
             }

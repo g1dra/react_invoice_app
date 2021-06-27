@@ -1,13 +1,15 @@
-import React, {useState} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {add, selectServices} from './serviceSlice'
 import {Form, Input, Button} from 'antd';
+import moment from 'moment';
 
 export const Service = () => {
     const services = useSelector(selectServices);
     const dispatch = useDispatch();
 
     const onFinish = (service) => {
+        service.date = moment().format("DD.MM.YYYY");
         dispatch(add(service))
     };
 
@@ -35,15 +37,15 @@ export const Service = () => {
                 name="name"
                 rules={[{required: true, message: 'Please insert service name'}]}
             >
-                <Input/>
+                <Input placeholder="Insert service name"/>
             </Form.Item>
 
             <Form.Item
                 label="Description"
                 name="description"
-                rules={[{required: true, message: 'Please insert service Description'}]}
+                rules={[{required: true, message: 'Please insert service description'}]}
             >
-                <Input/>
+                <Input placeholder="Insert service description"/>
             </Form.Item>
 
             <Form.Item
@@ -51,7 +53,15 @@ export const Service = () => {
                 name="price"
                 rules={[{required: true, message: 'Please insert service price'}]}
             >
-                <Input type="number"/>
+                <Input type="number" placeholder="Insert service price"/>
+            </Form.Item>
+
+            <Form.Item
+                label="Vat rate"
+                name="vatRate"
+                rules={[{required: true, message: 'Please insert VAT rate'}]}
+            >
+                <Input type="number" placeholder="Insert service VAT rate"/>
             </Form.Item>
 
             <Form.Item

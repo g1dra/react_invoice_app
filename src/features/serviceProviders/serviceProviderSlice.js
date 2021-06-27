@@ -14,7 +14,7 @@ export const serviceProviderSlice = createSlice({
                 "zipCode": "90011",
                 "region": "Americas",
                 "phone": "+38269559834",
-                "vat": "ATU99999999"
+                "vatId": "ATU99999999"
             },
             {
                 "name": "Amazon",
@@ -26,7 +26,7 @@ export const serviceProviderSlice = createSlice({
                 "zipCode": "90011",
                 "region": "Americas",
                 "phone": "+38269559834",
-                "vat": "ATU99999999"
+                "vatId": "ATU99999999"
             }
         ]
     },

@@ -5,10 +5,10 @@ export const customerSlice = createSlice({
     initialState: {
         customers: [
             {
-                "name": "Darko",
-                "email": "darko.vucetic7@gmail.com",
+                "name": "Customer1",
+                "email": "customer1@gmail.com",
                 "business": "Legal",
-                "address": "Bratstva Jedinstva",
+                "address": "Customer1 address",
                 "city": "Podgorica",
                 "country": "Montenegro",
                 "region": "Europe",
@@ -17,12 +17,12 @@ export const customerSlice = createSlice({
                 "vatId": "ATU99999999"
             },
             {
-                "name": "Jovan",
-                "email": "darko.vucetic7@gmail.com",
+                "name": "Customer2",
+                "email": "customer2@gmail.com",
                 "business": "Legal",
-                "address": "Bratstva Jedinstva",
-                "city": "Podgorica",
-                "country": "Montenegro",
+                "address": "Customer2 address",
+                "city": "Paris",
+                "country": "France",
                 "region": "Europe",
                 "zipCode": "81000",
                 "phone": "+38269559834",

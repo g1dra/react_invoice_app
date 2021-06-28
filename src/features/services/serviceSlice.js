@@ -5,14 +5,14 @@ export const serviceSlice = createSlice({
     initialState: {
         services: [
             {
-                "name": "peglanje",
+                "name": "service1",
                 "date": "15.04.2021",
                 "description" : "Description",
                 "vatRate": 10,
                 "price": 1000,
             },
             {
-                "name": "kuvanje",
+                "name": "service2",
                 "date": "15.04.2021",
                 "description" : "Description",
                 "vatRate": 10,

@@ -5,10 +5,10 @@ export const serviceProviderSlice = createSlice({
     initialState: {
         serviceProviders: [
             {
-                "name": "Google",
-                "email": "google@gmail.com",
-                "address": "1600 Amphitheatre Parkway Mountain View, CA 94043",
-                "city": "Paris",
+                "name": "ServiceProvider1",
+                "email": "serviceProvider1@gmail.com",
+                "address": "ServiceProvider1 address",
+                "city": "Podgorica",
                 "country": "Montenegro",
                 "region": "Europe",
                 "zipCode": "90011",
@@ -16,12 +16,12 @@ export const serviceProviderSlice = createSlice({
                 "vatId": "ATU99999999"
             },
             {
-                "name": "Amazon",
-                "email": "google@gmail.com",
-                "address": "1600 Amphitheatre Parkway Mountain View, CA 94043",
+                "name": "ServiceProvider2",
+                "email": "serviceProvider2.com",
+                "address": "ServiceProvider2 address",
                 "city": "Paris",
-                "region": "Europe",
                 "country": "United States of America",
+                "region": "Europe",
                 "zipCode": "90011",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"

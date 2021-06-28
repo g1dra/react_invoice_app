@@ -10,7 +10,6 @@ export const serviceSlice = createSlice({
                 "description" : "Description",
                 "vatRate": 10,
                 "price": 1000,
-                "totalPrice": 1100
             },
             {
                 "name": "kuvanje",
@@ -18,7 +17,6 @@ export const serviceSlice = createSlice({
                 "description" : "Description",
                 "vatRate": 10,
                 "price": 1000,
-                "totalPrice": 1100
             }
         ]
     },

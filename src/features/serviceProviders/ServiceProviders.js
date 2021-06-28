@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {add, selectServiceProviders} from './serviceProviderSlice'
-import {Form, Input, Select, Button} from 'antd';
+import {Button, Form, Input, Select} from 'antd';
 
 export const ServiceProvider = () => {
     const serviceProviders = useSelector(selectServiceProviders);
-    const { Option } = Select;
+    const {Option} = Select;
 
     const [countries, setCountries] = useState([]);
 
@@ -20,6 +20,7 @@ export const ServiceProvider = () => {
     const dispatch = useDispatch();
 
     const onFinish = (serviceProvider) => {
+        serviceProvider.region = countries.filter(country => country.name === serviceProvider.country)[0].region;
         dispatch(add(serviceProvider))
     };
 
@@ -44,7 +45,7 @@ export const ServiceProvider = () => {
                 name="name"
                 rules={[{required: true, message: 'Please insert Service provider name'}]}
             >
-                <Input placeholder="Please insert service provider description"/>
+                <Input placeholder="Insert description"/>
             </Form.Item>
 
             <Form.Item
@@ -52,7 +53,7 @@ export const ServiceProvider = () => {
                 name="email"
                 rules={[{required: true, message: 'Please insert Service provider email'}]}
             >
-                <Input/>
+                <Input placeholder="Insert email"/>
             </Form.Item>
 
             <Form.Item
@@ -60,7 +61,7 @@ export const ServiceProvider = () => {
                 name="address"
                 rules={[{required: true, message: 'Please insert Service provider address'}]}
             >
-                <Input/>
+                <Input placeholder="Please insert address"/>
             </Form.Item>
 
             <Form.Item
@@ -68,7 +69,7 @@ export const ServiceProvider = () => {
                 name="city"
                 rules={[{required: true, message: 'Please insert Service provider city'}]}
             >
-                <Input/>
+                <Input placeholder="Insert city"/>
             </Form.Item>
 
             <Form.Item
@@ -78,8 +79,8 @@ export const ServiceProvider = () => {
             >
                 <Select
                     allowClear
-                    style={{ width: '100%' }}
-                    placeholder="Please select Country "
+                    style={{width: '100%'}}
+                    placeholder="Select Country "
                 >
                     {countries && countries.map(country => {
                         return <Option key={country.name} value={country.name}>
@@ -101,7 +102,7 @@ export const ServiceProvider = () => {
                 name="zipCode"
                 rules={[{required: true, message: 'Please insert zip Code'}]}
             >
-                <Input/>
+                <Input placeholder="Insert zip code"/>
             </Form.Item>
 
             <Form.Item
@@ -109,15 +110,15 @@ export const ServiceProvider = () => {
                 name="phone"
                 rules={[{required: true, message: 'Please insert phone number'}]}
             >
-                <Input/>
+                <Input placeholder="Insert phone number"/>
             </Form.Item>
 
             <Form.Item
                 label="VAT Id"
                 name="vatId"
-                rules={[{required: true, message: 'Please insert VAT IT'}]}
+                rules={[{required: true, message: 'Please insert VAT ID'}]}
             >
-                <Input/>
+                <Input placeholder="Insert VAT Id"/>
             </Form.Item>
 
             <Form.Item

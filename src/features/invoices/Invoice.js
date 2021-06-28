@@ -5,6 +5,7 @@ import {selectCustomers} from "../customers/CustomerSlice";
 import {selectServiceProviders} from "../serviceProviders/serviceProviderSlice";
 import {selectServices} from "../services/serviceSlice";
 import InvoiceForm from "./InvoiceForm";
+import {calculateVat} from './vatService';
 
 const Invoice = () => {
 
@@ -22,18 +23,20 @@ const Invoice = () => {
     const [visible, setVisible] = useState(false);
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-        setVisible(true);
+        setVisible(true); // display modal
 
         let sServices = services.filter(service => values.services.includes(service.name));
-
-        setSelectedServices(sServices);
 
         let sCustomer = customers.filter(customer => customer.name === values.customer)[0];
         setSelectedCustomer(sCustomer);
 
         let sSelectedProvider = serviceProviders.filter(serviceProvider => serviceProvider.name === values.serviceProvider)[0];
+
+        let servicesWithVat = calculateVat(sSelectedProvider, sCustomer, sServices);
+
         setSelectedServiceProvider(sSelectedProvider);
+
+        setSelectedServices(servicesWithVat);
     };
 
     const onFinishFailed = (errorInfo) => {

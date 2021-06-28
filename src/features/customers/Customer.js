@@ -48,7 +48,7 @@ const Customer = () => {
                 name="name"
                 rules={[{required: true, message: 'Please insert customer name'}]}
             >
-                <Input/>
+                <Input placeholder="Insert name"/>
             </Form.Item>
 
             <Form.Item
@@ -56,7 +56,7 @@ const Customer = () => {
                 name="email"
                 rules={[{required: true, message: 'Please insert email'}]}
             >
-                <Input/>
+                <Input placeholder="Insert email"/>
             </Form.Item>
 
             <Form.Item
@@ -75,7 +75,7 @@ const Customer = () => {
                 name="address"
                 rules={[{required: true, message: 'Please insert Address'}]}
             >
-                <Input/>
+                <Input placeholder="Insert address"/>
             </Form.Item>
 
             <Form.Item
@@ -83,7 +83,7 @@ const Customer = () => {
                 name="city"
                 rules={[{required: true, message: 'Please insert City'}]}
             >
-                <Input/>
+                <Input placeholder="Insert city"/>
             </Form.Item>
 
             <Form.Item
@@ -94,7 +94,7 @@ const Customer = () => {
                 <Select
                     allowClear
                     style={{ width: '100%' }}
-                    placeholder="Please select Country "
+                    placeholder="Select Country "
                 >
                     {countries && countries.map(country => {
                         return <Option key={country.name} value={country.name}>
@@ -116,7 +116,7 @@ const Customer = () => {
                 name="zipCode"
                 rules={[{required: true, message: 'Please insert zip Code'}]}
             >
-                <Input/>
+                <Input placeholder="Insert zip code"/>
             </Form.Item>
 
             <Form.Item
@@ -124,15 +124,15 @@ const Customer = () => {
                 name="phone"
                 rules={[{required: true, message: 'Please insert phone number'}]}
             >
-                <Input/>
+                <Input placeholder="Insert phone number"/>
             </Form.Item>
 
             <Form.Item
                 label="VAT Id"
                 name="vatId"
-                rules={[{required: true, message: 'Please insert VAT IT'}]}
+                rules={[{required: true, message: 'Please insert VAT Id'}]}
             >
-                <Input/>
+                <Input placeholder="Insert VAT Id"/>
             </Form.Item>
 
             <Form.Item

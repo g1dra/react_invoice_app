@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {add, selectServiceProviders} from './serviceProviderSlice'
-import {Button, Form, Input, Select} from 'antd';
+import {Button, Form, Input, Select, Table} from 'antd';
+import {getColumnKeys, getRegion} from "../../helper";
 
 export const ServiceProvider = () => {
     const serviceProviders = useSelector(selectServiceProviders);
+
     const {Option} = Select;
 
     const [countries, setCountries] = useState([]);
@@ -20,8 +22,8 @@ export const ServiceProvider = () => {
     const dispatch = useDispatch();
 
     const onFinish = (serviceProvider) => {
-        serviceProvider.region = countries.filter(country => country.name === serviceProvider.country)[0].region;
-        dispatch(add(serviceProvider))
+        const region = getRegion(serviceProvider.country, countries)
+        dispatch(add({ ...serviceProvider, region }))
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -45,7 +47,7 @@ export const ServiceProvider = () => {
                 name="name"
                 rules={[{required: true, message: 'Please insert Service provider name'}]}
             >
-                <Input placeholder="Insert description"/>
+                <Input placeholder="Insert provider name"/>
             </Form.Item>
 
             <Form.Item
@@ -86,7 +88,7 @@ export const ServiceProvider = () => {
                         return <Option key={country.name} value={country.name}>
                             <div className="demo-option-label-item">
                                 <span role="img">
-                                    <img srcSet={country.flag} height="10px"/>
+                                    <img alt={country.flag} srcSet={country.flag} height="10px"/>
                                 </span>
                                 <span> </span>
                                 {country.name}
@@ -116,7 +118,7 @@ export const ServiceProvider = () => {
             <Form.Item
                 label="VAT Id"
                 name="vatId"
-                rules={[{required: true, message: 'Please insert VAT ID'}]}
+                rules={[{required: true, message: 'Please insert VAT Id'}]}
             >
                 <Input placeholder="Insert VAT Id"/>
             </Form.Item>
@@ -132,9 +134,14 @@ export const ServiceProvider = () => {
                 </Button>
             </Form.Item>
 
-            <p>
-                {JSON.stringify(serviceProviders)}
-            </p>
+            <Form.Item
+                wrapperCol={{
+                    offset: 4,
+                    span: 16,
+                }}
+            >
+                <Table columns={getColumnKeys(serviceProviders[0])} dataSource={serviceProviders} pagination={false} rowKey="name"/>
+            </Form.Item>
 
         </Form>
     )

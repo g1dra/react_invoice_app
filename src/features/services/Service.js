@@ -1,11 +1,14 @@
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {add, selectServices} from './serviceSlice'
-import {Form, Input, Button} from 'antd';
+import {Form, Input, Button, Table} from 'antd';
 import moment from 'moment';
+import {getColumnKeys} from "../../helper";
 
 export const Service = () => {
+
     const services = useSelector(selectServices);
+
     const dispatch = useDispatch();
 
     const onFinish = (service) => {
@@ -75,9 +78,14 @@ export const Service = () => {
                 </Button>
             </Form.Item>
 
-            <p>
-                {JSON.stringify(services)}
-            </p>
+            <Form.Item
+                wrapperCol={{
+                    offset: 4,
+                    span: 16,
+                }}
+            >
+                <Table columns={getColumnKeys(services[0])} dataSource={services} pagination={false} rowKey="name"/>
+            </Form.Item>
         </Form>
     )
 }

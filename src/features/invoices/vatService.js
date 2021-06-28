@@ -5,9 +5,7 @@ export const vatTypes = {
 }
 
 export const calculateVat = (serviceProvider, customer, services) => {
-
-    let vatType = findVatType(serviceProvider, customer)
-    console.log(vatType)
+    let vatType = findVatType(serviceProvider, customer);
     let vatRate = 0;
 
     switch (vatType) {
@@ -15,20 +13,23 @@ export const calculateVat = (serviceProvider, customer, services) => {
             vatRate = 0;
             break
         case vatTypes.partial:
-            vatRate = services[0].vatRate * 0.5; // random x
+            vatRate = services[0].vatRate * 0.5; // random x= 0.5
             break
         case vatTypes.full:
-            vatRate = services[0].vatRate
+            vatRate = services[0].vatRate;
             break
+        default:
+            vatRate = 0;
+
     }
-
-    let servicesCopy = JSON.parse(JSON.stringify(services));
-
-    return servicesCopy.map(service => {
-        service.vatRate = vatRate
-        service.total = service.price + service.price / 100 * vatRate;
-        return service
+    const result = services.map(service => {
+        const total = service.price + service.price / 100 * vatRate;
+        return {
+            ...service, vatRate, total
+        }
     });
+
+    return result;
 }
 
 const findVatType = (serviceProvider, customer) => {
@@ -52,5 +53,6 @@ const findVatType = (serviceProvider, customer) => {
     if (customer.region === 'Europe' && customer.country !== serviceProvider.country) {
         return vatTypes.none
     }
-}
 
+    return vatTypes.full
+}

@@ -10,8 +10,8 @@ export const serviceProviderSlice = createSlice({
                 "address": "1600 Amphitheatre Parkway Mountain View, CA 94043",
                 "city": "Paris",
                 "country": "Montenegro",
-                "zipCode": "90011",
                 "region": "Europe",
+                "zipCode": "90011",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"
             },
@@ -20,9 +20,9 @@ export const serviceProviderSlice = createSlice({
                 "email": "google@gmail.com",
                 "address": "1600 Amphitheatre Parkway Mountain View, CA 94043",
                 "city": "Paris",
+                "region": "Europe",
                 "country": "United States of America",
                 "zipCode": "90011",
-                "region": "Americas",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"
             }

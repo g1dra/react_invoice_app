@@ -8,14 +8,14 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
 
     useEffect(() => {
         if (services && services[0]?.name) {
-            let testColumns = Object.keys(services[0]).map((column, index) => {
+            let resultColumns = Object.keys(services[0]).map((column, index) => {
                 return {
                     title: _.startCase(column),
                     dataIndex: column,
                     key: index
                 }
             })
-            setColumns(testColumns)
+            setColumns(resultColumns)
         }
     }, [services])
 
@@ -41,7 +41,7 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
                     <p>Company:</p>
                     <p>Name: {serviceProvider.name}</p>
                     <p>Address: {serviceProvider.address}</p>
-                    <p>Address: {serviceProvider.country}</p>
+                    <p>Country: {serviceProvider.country}</p>
                     <p>City: {serviceProvider.city}</p>
                     <p>Zip: {serviceProvider.zipCode}</p>
                     <p>Phone: {serviceProvider.phone}</p>
@@ -51,7 +51,7 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
             </Row>
             <Divider></Divider>
 
-            <Table columns={columns} dataSource={services} pagination={false}/>
+            <Table columns={columns} dataSource={services} pagination={false} rowKey="name"/>
         </>
     )
 }

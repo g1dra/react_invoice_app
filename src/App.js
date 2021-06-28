@@ -17,7 +17,7 @@ import {InvoiceView} from "./views/InvoiceView";
 import {Layout, Menu} from 'antd';
 
 const App = () => {
-    const { Header, Footer, Content, Sider } = Layout;
+    const { Header, Footer, Content } = Layout;
     return (
         <Layout>
             <Router>

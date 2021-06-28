@@ -28,6 +28,7 @@ const Invoice = () => {
         let sServices = services.filter(service => values.services.includes(service.name));
 
         let sCustomer = customers.filter(customer => customer.name === values.customer)[0];
+
         setSelectedCustomer(sCustomer);
 
         let sSelectedProvider = serviceProviders.filter(serviceProvider => serviceProvider.name === values.serviceProvider)[0];

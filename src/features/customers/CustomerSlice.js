@@ -11,6 +11,7 @@ export const customerSlice = createSlice({
                 "address": "Bratstva Jedinstva",
                 "city": "Podgorica",
                 "country": "Montenegro",
+                "region": "Europe",
                 "zipCode": "81000",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"
@@ -22,6 +23,7 @@ export const customerSlice = createSlice({
                 "address": "Bratstva Jedinstva",
                 "city": "Podgorica",
                 "country": "Montenegro",
+                "region": "Europe",
                 "zipCode": "81000",
                 "phone": "+38269559834",
                 "vatId": "ATU99999999"

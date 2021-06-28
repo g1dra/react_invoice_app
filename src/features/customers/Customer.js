@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {add, selectCustomers} from './CustomerSlice'
-import {Form, Input, Select, Button, Radio} from 'antd';
+import {Form, Input, Select, Button, Radio, Table} from 'antd';
+import {getColumnKeys, getRegion} from "../../helper";
+
 
 const Customer = () => {
     const customers = useSelector(selectCustomers);
@@ -20,8 +22,11 @@ const Customer = () => {
 
     const dispatch = useDispatch();
 
+
+
     const onFinish = (customer) => {
-        dispatch(add(customer))
+        const region = getRegion(customer.country, countries)
+        dispatch(add({ ...customer, region}))
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -100,7 +105,7 @@ const Customer = () => {
                         return <Option key={country.name} value={country.name}>
                             <div className="demo-option-label-item">
                                 <span role="img">
-                                    <img srcSet={country.flag} height="10px"/>
+                                    <img alt={country.flag} srcSet={country.flag} height="10px"/>
                                 </span>
                                 <span> </span>
                                 {country.name}
@@ -146,10 +151,14 @@ const Customer = () => {
                 </Button>
             </Form.Item>
 
-            <p>
-                {JSON.stringify(customers)}
-            </p>
-
+            <Form.Item
+                wrapperCol={{
+                    offset: 4,
+                    span: 16,
+                }}
+            >
+                <Table columns={getColumnKeys(customers[0])} dataSource={customers} pagination={false} rowKey="name"/>
+            </Form.Item>
         </Form>
     )
 }

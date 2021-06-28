@@ -23,14 +23,14 @@ const App = () => {
             <Router>
                 <Header  style={{ width: '100%', padding: 0 }}>
                     <Menu mode="horizontal" className="mb-5">
-                        <Menu.Item key="services">
-                            <Link to="/services">Services</Link>
+                        <Menu.Item key="customers">
+                            <Link to="/customers">Customers</Link>
                         </Menu.Item>
                         <Menu.Item key="service-providers">
                             <Link to="/service-providers">Service Providers</Link>
                         </Menu.Item>
-                        <Menu.Item key="customers">
-                            <Link to="/customers">Customers</Link>
+                        <Menu.Item key="services">
+                            <Link to="/services">Services</Link>
                         </Menu.Item>
                         <Menu.Item key="invoice">
                             <Link to="/invoice">Make Invoice</Link>
@@ -52,7 +52,7 @@ const App = () => {
                             <InvoiceView/>
                         </Route>
                         <Route path="/">
-                            <ServiceView/>
+                            <CustomerView/>
                         </Route>
                     </Switch>
                 </Content>

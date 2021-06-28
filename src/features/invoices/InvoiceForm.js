@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Divider, Table, Row, Col} from "antd";
 import moment from "moment";
 import {getColumnKeys} from "../../helper";
 
 const InvoiceForm = ({customer, serviceProvider, services}) => {
+    const [columns, setColumns] = useState([]);
+    useEffect(() => {
+        if (services && services[0]?.name) {
+            let testColumns = getColumnKeys(services[0])
+            setColumns(testColumns)
+        }
+    }, [services])
 
     return (
         <>
@@ -37,7 +44,7 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
             </Row>
             <Divider></Divider>
 
-            <Table columns={getColumnKeys(services[0])} dataSource={services} pagination={false} rowKey="name"/>
+            <Table columns={columns} dataSource={services} pagination={false} rowKey="name"/>
         </>
     )
 }

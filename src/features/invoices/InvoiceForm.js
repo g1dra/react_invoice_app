@@ -27,10 +27,10 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
             <Row>
 
                 <Col span={6}>
-                    {/*REACT PAKAO, todo napraviti custom compo*/}
                     <p>Customer:</p>
                     <p>Name: {customer.name}</p>
                     <p>Address: {customer.address}</p>
+                    <p>Country: {customer.country}</p>
                     <p>City: {customer.city}</p>
                     <p>Zip: {customer.zipCode}</p>
                     <p>Phone: {customer.phone}</p>
@@ -41,6 +41,7 @@ const InvoiceForm = ({customer, serviceProvider, services}) => {
                     <p>Company:</p>
                     <p>Name: {serviceProvider.name}</p>
                     <p>Address: {serviceProvider.address}</p>
+                    <p>Address: {serviceProvider.country}</p>
                     <p>City: {serviceProvider.city}</p>
                     <p>Zip: {serviceProvider.zipCode}</p>
                     <p>Phone: {serviceProvider.phone}</p>
